@@ -1,0 +1,13 @@
+{
+  "name": "commerce-mcp-sandbox",
+  "version": "0.1.0",
+  "description": "A zero-dependency mock commerce MCP server for building and testing shopping agents. Search products, create orders, simulate payment, track shipping, request refunds — all in-memory.",
+  "license": "MIT",
+  "keywords": ["mcp", "mcp-server", "commerce", "shopping-agent", "agentic-commerce", "mock", "sandbox", "model-context-protocol", "ai-agent"],
+  "type": "commonjs",
+  "main": "src/index.js",
+  "bin": { "commerce-mcp-sandbox": "src/index.js" },
+  "files": ["src", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node src/index.js", "start:http": "node src/http.js", "test": "node test/smoke.mjs" }
+}

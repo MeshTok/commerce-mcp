@@ -1,0 +1,16 @@
+[
+  { "name": "search_products", "description": "Search the mock catalog. Prices in CNY cents (int). Read-only.",
+    "inputSchema": { "type": "object", "properties": { "query": { "type": "string" }, "category": { "type": "string", "enum": ["daily", "office", "digital", "food", "pet"] }, "page": { "type": "number" }, "page_size": { "type": "number" } } } },
+  { "name": "get_product", "description": "Product detail by sku, incl. specs. Read-only.",
+    "inputSchema": { "type": "object", "properties": { "sku": { "type": "string" } }, "required": ["sku"] } },
+  { "name": "create_order", "description": "Create an order. Requires receiver {name, phone, address}.",
+    "inputSchema": { "type": "object", "properties": { "items": { "type": "array", "items": { "type": "object", "properties": { "sku": { "type": "string" }, "qty": { "type": "number" } }, "required": ["sku"] } }, "receiver": { "type": "object", "properties": { "name": { "type": "string" }, "phone": { "type": "string" }, "address": { "type": "string" } }, "required": ["name", "phone", "address"] }, "user_ref": { "type": "string" } }, "required": ["items", "receiver"] } },
+  { "name": "pay_order", "description": "Simulate a successful payment. Shipping auto-advances (~5s), delivery (~15s).",
+    "inputSchema": { "type": "object", "properties": { "order_no": { "type": "string" } }, "required": ["order_no"] } },
+  { "name": "get_order", "description": "Order status + event timeline.",
+    "inputSchema": { "type": "object", "properties": { "order_no": { "type": "string" } }, "required": ["order_no"] } },
+  { "name": "list_orders", "description": "List orders, optionally filtered by user_ref.",
+    "inputSchema": { "type": "object", "properties": { "user_ref": { "type": "string" } } } },
+  { "name": "request_refund", "description": "Simulate a refund (no real money).",
+    "inputSchema": { "type": "object", "properties": { "order_no": { "type": "string" }, "reason": { "type": "string" } }, "required": ["order_no"] } }
+]
