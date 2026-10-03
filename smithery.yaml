@@ -1,0 +1,8 @@
+# Smithery 配置（https://smithery.ai）
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+commandFunction: |-
+  (config) => ({ "command": "node", "args": ["src/index.js"] })
